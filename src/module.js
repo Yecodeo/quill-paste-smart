@@ -21,6 +21,7 @@ const rules = {
 class QuillPasteSmart extends Clipboard {
   constructor(quill, options) {
     super(quill, options);
+    console.log('Starting...')
 
     this.allowed = options.allowed;
     this.keepSelection = options.keepSelection;
