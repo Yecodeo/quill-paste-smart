@@ -1,9 +1,23 @@
 import Quill from 'quill';
 import DOMPurify from 'dompurify';
+import sanitizeHtml from 'sanitize-html';
 
 const Clipboard = Quill.import('modules/clipboard');
 const Delta = Quill.import('delta');
-
+const rules = {
+  allowedAttributes: {
+    '*': ["style"],
+  },
+  allowedClasses: {
+      '*': [ 'ql-*' ]
+  },
+  allowedStyles: {
+    '*': {
+      'color': [/(.)/],
+      'background-color': [/(.)/],
+    },
+  }
+}
 class QuillPasteSmart extends Clipboard {
   constructor(quill, options) {
     super(quill, options);
@@ -39,6 +53,7 @@ class QuillPasteSmart extends Clipboard {
 
     let content = text;
     if (html) {
+      html = this.sanitizeHtml(value, rules).replaceAll('<br />','<br>');
       // add hooks to accessible setttings
       if (typeof this.hooks?.beforeSanitizeElements === 'function') {
         DOMPurify.addHook('beforeSanitizeElements', this.hooks.beforeSanitizeElements);

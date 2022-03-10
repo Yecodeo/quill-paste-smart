@@ -33,7 +33,8 @@
   },
   "homepage": "https://github.com/Artem-Schander/quill-paste-smart",
   "dependencies": {
-    "dompurify": "^2.0.10"
+    "dompurify": "^2.0.10",
+    "sanitize-html": "^2.7.0"
   },
   "peerDependencies": {
     "quill": "^1.3.5"
