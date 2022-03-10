@@ -53,7 +53,7 @@ class QuillPasteSmart extends Clipboard {
 
     let content = text;
     if (html) {
-      html = this.sanitizeHtml(value, rules).replaceAll('<br />','<br>');
+      html.innerHTML = sanitizeHtml(html.innerHTML, rules);
       // add hooks to accessible setttings
       if (typeof this.hooks?.beforeSanitizeElements === 'function') {
         DOMPurify.addHook('beforeSanitizeElements', this.hooks.beforeSanitizeElements);
