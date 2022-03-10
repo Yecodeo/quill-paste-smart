@@ -9,10 +9,10 @@ const config = {
     libraryTarget: 'umd',
   },
   optimization: {
-    minimize: true,
+    minimize: false,
   },
   target: 'web',
-  mode: 'production',
+  mode: 'development',
   externals: {
     quill: {
       commonjs: 'quill',
